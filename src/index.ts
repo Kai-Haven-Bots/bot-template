@@ -1,4 +1,4 @@
-import { Client, IntentsBitField} from 'discord.js';
+import { Client, EmbedBuilder, IntentsBitField} from 'discord.js';
 import * as path from 'path';
 import * as fs from 'fs';
 import { Sequelize } from 'sequelize';
