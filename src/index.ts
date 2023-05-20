@@ -44,6 +44,20 @@ client.once('ready', async (client) => {
 
 
 
+export const errHandler = async (err: any, msg: any) => {
+    try{
+        const errBed = new EmbedBuilder()
+            .setTitle("An error occurred!")
+            .setDescription('```' + err.message + "```");
+        await msg.reply({
+            embeds: [errBed],
+            ephemeral: true
+        })
+    }catch(err){
+        console.log("Err on /src/errHandler()");
+        console.log(err);
+    }
+}
 
 
 
