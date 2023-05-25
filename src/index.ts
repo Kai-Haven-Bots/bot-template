@@ -32,7 +32,7 @@ sequelize.sync({alter: true}).then(async sequelize => {
 
 
 const F = IntentsBitField.Flags;
-const client = new Client({
+export const client = new Client({
     intents: [F.Guilds, F.GuildMessages, F.GuildMembers, F.MessageContent]
 })
 
