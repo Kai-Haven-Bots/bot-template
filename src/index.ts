@@ -2,6 +2,7 @@ import { Client, EmbedBuilder, IntentsBitField} from 'discord.js';
 import * as path from 'path';
 import * as fs from 'fs';
 import { Sequelize } from 'sequelize';
+import { message_create_listener } from './events/messageCreate';
 
 require('dotenv').config({
     path: path.join(__dirname, ".env")
@@ -39,6 +40,7 @@ export const client = new Client({
 
 client.once('ready', async (client) => {
     console.log("ready");
+    message_create_listener(client);
 })
 
 
