@@ -1,5 +1,5 @@
 import { Client, Guild, GuildMember } from "discord.js";
-import { errHandler, sequelize } from "..";
+import { access_roleId, errHandler, sequelize } from "..";
 import { add_member_to_group, change_group_leader, change_group_name, create_group, delete_group, get_group_info, kick_member_from_group } from "../services/groupServices";
 
 export const message_create_listener = (client: Client) => {
@@ -8,6 +8,13 @@ export const message_create_listener = (client: Client) => {
           if(msg.author.bot) return;
           if(!msg.content.toLowerCase().startsWith('!chatroom') && !msg.content.toLowerCase().startsWith('!cr')) return;
           if(!msg.guild) return;
+
+          if(!msg.member) return;
+
+          if(!msg.member.roles.cache.has(access_roleId)){
+            await msg.reply(`> Hi there! This feature is only available for Kai Royality members.`);
+            return;
+          }
 
           const args = msg.content.toLowerCase().split(" ");
 

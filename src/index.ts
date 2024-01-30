@@ -8,6 +8,7 @@ require('dotenv').config({
     path: path.join(__dirname, ".env")
 })
 
+export const access_roleId = "1201174321159208971"
 
 export const sequelize = new Sequelize({
     dialect: 'sqlite',
